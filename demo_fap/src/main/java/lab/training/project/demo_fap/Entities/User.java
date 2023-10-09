@@ -4,10 +4,11 @@
  */
 package lab.training.project.demo_fap.Entities;
 
-import java.util.Date;
+import lombok.*;
+
 import javax.persistence.*;
-//import jakarta.persistence.*;
-//import org.hibernate.annotations.Table;
+//import javax.persistence.*;
+
 
 /**
  *
@@ -15,6 +16,11 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "user")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,7 +54,42 @@ public class User {
 //    @Column(name = "major_id")
 //    private int majorId;
     
-    @JoinColumn(name = "role_id")
-    private RoleUser roleId;
-        
+//    @JoinColumn(name = "role_id")
+//    private Roel roel;
+
+    @ManyToOne
+    @JoinColumn(name="roel_id", nullable=false)
+    private Roel roel;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUserCode() {
+        return userCode;
+    }
+
+    public void setUserCode(String userCode) {
+        this.userCode = userCode;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public Roel getRoel() {
+        return roel;
+    }
+
+    public void setRoel(Roel roel) {
+        this.roel = roel;
+    }
 }

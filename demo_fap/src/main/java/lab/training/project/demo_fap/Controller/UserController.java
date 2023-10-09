@@ -28,7 +28,8 @@ public class UserController {
     @PostMapping("/register")
     public Map<String, Object> createUser(@RequestBody User user){
         Map<String, Object> status = new HashMap<>();
-        userService.saveUser(user);
+//        userService.saveUser(user);
+        System.out.println("Object:  "+user);
         
         status.put("code", "200");
         status.put("message", "code is working");

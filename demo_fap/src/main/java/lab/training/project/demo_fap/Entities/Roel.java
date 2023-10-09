@@ -5,6 +5,7 @@
 package lab.training.project.demo_fap.Entities;
 
 import java.util.List;
+import java.util.Set;
 import javax.persistence.*;
 import lombok.Data;
 
@@ -13,9 +14,9 @@ import lombok.Data;
  * @author phamminhgiang
  */
 @Entity
-@Table(name = "role")
+@Table(name = "roel")
 @Data
-public class RoleUser {
+public class Roel {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +26,30 @@ public class RoleUser {
     @Column(name = "name")
     private String name;
     
-    @OneToMany(mappedBy = "roleId", cascade = CascadeType.ALL)
-    private List<User> users;
-    
+    @OneToMany(mappedBy = "roel", cascade = CascadeType.ALL)
+    private Set<User> users;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 }
