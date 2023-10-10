@@ -17,10 +17,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user")
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
+
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,11 +52,21 @@ public class User {
 //    private int majorId;
     
 //    @JoinColumn(name = "role_id")
-//    private Roel roel;
+//    private Role role;
 
     @ManyToOne
-    @JoinColumn(name="roel_id", nullable=false)
-    private Roel roel;
+    @JoinColumn(name="role_id")
+    private Role roleId;
+
+//    public User(String userCode, String userName, Role role) {
+//        this.userCode = userCode;
+//        this.userName = userName;
+//        this.role = role;
+//    }
+
+    public User() {
+
+    }
 
     public int getId() {
         return id;
@@ -85,11 +92,11 @@ public class User {
         this.userName = userName;
     }
 
-    public Roel getRoel() {
-        return roel;
+    public Role getRoleId() {
+        return roleId;
     }
 
-    public void setRoel(Roel roel) {
-        this.roel = roel;
+    public void setRoleId(Role roleId) {
+        this.roleId = roleId;
     }
 }

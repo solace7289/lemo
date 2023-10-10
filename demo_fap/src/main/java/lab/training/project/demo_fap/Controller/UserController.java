@@ -28,12 +28,27 @@ public class UserController {
     @PostMapping("/register")
     public Map<String, Object> createUser(@RequestBody User user){
         Map<String, Object> status = new HashMap<>();
-//        userService.saveUser(user);
+
+        User testUser = new User();
+        Role role = new Role();
+        testUser.setUserCode("user code 1");
+        testUser.setUserName("user name 1");
+
+        role.setRoleId(1);
+        role.setName("STUDENT");
+
+        testUser.setRoleId(role);
+
+
+        //save testUser
+        userService.saveUser(testUser);
+
         System.out.println("Object:  "+user);
-        
+        System.out.println("test object 1: "+testUser);
+
         status.put("code", "200");
         status.put("message", "code is working");
-        status.put("Object", user);
+        status.put("Object", testUser);
         
         return status;
     }

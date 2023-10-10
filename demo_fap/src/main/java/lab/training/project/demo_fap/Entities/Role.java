@@ -4,7 +4,6 @@
  */
 package lab.training.project.demo_fap.Entities;
 
-import java.util.List;
 import java.util.Set;
 import javax.persistence.*;
 import lombok.Data;
@@ -14,27 +13,34 @@ import lombok.Data;
  * @author phamminhgiang
  */
 @Entity
-@Table(name = "roel")
+@Table(name = "role")
 @Data
-public class Roel {
+public class Role {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+    @Column(name = "role_id")
+    private int roleId;
     
     @Column(name = "name")
     private String name;
     
-    @OneToMany(mappedBy = "roel", cascade = CascadeType.ALL)
-    private Set<User> users;
+//    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+//    private Set<User> users;
 
-    public int getId() {
-        return id;
+    public Role() {
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public Role(String name) {
+        this.name = name;
+    }
+
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
     }
 
     public String getName() {
@@ -45,11 +51,11 @@ public class Roel {
         this.name = name;
     }
 
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
+//    public Set<User> getUsers() {
+//        return users;
+//    }
+//
+//    public void setUsers(Set<User> users) {
+//        this.users = users;
+//    }
 }
